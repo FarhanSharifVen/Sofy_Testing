@@ -1,7 +1,7 @@
 on: [push]
 jobs:  
   Uploading-job:  
-    name: 'Upload build on Sofy'
+    name: 'Upload build on Sofy and run tests'
     runs-on: ubuntu-latest
     steps:
       - name: 'checkout'
@@ -10,5 +10,16 @@ jobs:
         env:
           build_path: 'tunein-radio-33-3-3.apk'
           subscription_key: 7B420BC2-DE88-4F52-B599-B348FF5D28D8
-          #application_guid: FB067100-F6BB-4EA8-9BC5-F9A868278648
-        uses: 'SOFYDEVELOPER/sofy-app-upload-github-action@main' 
+        uses: 'SOFYDEVELOPER/sofy-app-upload-github-action@main'
+
+      - name: 'Run Sofy tests'
+        env:
+          subscription_key: 7B420BC2-DE88-4F52-B599-B348FF5D28D8
+          app_name: 'TuneIn' # Replace 'YourAppName' with the actual name of your app in Sofy
+          test_suite_name: 'Signup' # Replace 'Signup' with the actual name of your test suite in Sofy
+        run: |
+          curl -X POST \
+          -H "Authorization: $subscription_key" \
+          -H "Content-Type: application/json" \
+          -d '{"appName":"'"$app_name"'","testSuiteName":"'"$test_suite_name"'"}' \
+          https://app.sofy.ai/api/v1/testExecutions
