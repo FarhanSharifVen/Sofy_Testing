@@ -4,17 +4,18 @@ jobs:
     name: 'Upload build on Sofy and run tests'
     runs-on: ubuntu-latest
     steps:
-      - name: 'checkout'
-        uses: 'actions/checkout@v2'
-      - name: 'Upload build'
-        env:
-          build_path: 'tunein-radio-33-3-3.apk'
-          subscription_key: 7B420BC2-DE88-4F52-B599-B348FF5D28D8
-        uses: 'SOFYDEVELOPER/sofy-app-upload-github-action@main'
+      # - name: 'checkout'
+      #   uses: 'actions/checkout@v2'
+      # - name: 'Upload build'
+      #   env:
+      #     build_path: 'tunein-radio-33-3-3.apk'
+      #     subscription_key: 7B420BC2-DE88-4F52-B599-B348FF5D28D8
+      #   uses: 'SOFYDEVELOPER/sofy-app-upload-github-action@main'
 
       - name: 'Run Sofy tests'
         env:
           subscription_key: 7B420BC2-DE88-4F52-B599-B348FF5D28D8
+          application_guid: 448FF482-AC31-48CC-9E8D-0B807A857E78 
           app_name: 'TuneIn' # Replace 'YourAppName' with the actual name of your app in Sofy
           test_suite_name: 'Signup' # Replace 'Signup' with the actual name of your test suite in Sofy
         run: |
