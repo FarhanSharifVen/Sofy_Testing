@@ -10,5 +10,5 @@ jobs:
         env:
           build_path: 'tunein-radio-33-3-3.apk'
           subscription_key: 2F36C0A1-88EF-489C-B3F8-61FC28574259
-          application_guid: FB067100-F6BB-4EA8-9BC5-F9A868278648
+          #application_guid: FB067100-F6BB-4EA8-9BC5-F9A868278648
         uses: 'SOFYDEVELOPER/sofy-app-upload-github-action@main' 
